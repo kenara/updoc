@@ -27,13 +27,13 @@ try {
 
 // Keeps track of the length of the 'likes' child list in a separate property.
 
-exports.likeJob = functions.database.ref('/likes/{jobid}/{userid}').onWrite(
+exports.likePost = functions.database.ref('/likes/{postid}/{userid}').onWrite(
 
   async (change, context) => {
 
-    const jobid = context.params.jobid;
+    const postid = context.params.postid;
     const collectionRef = change.after.ref.parent;
-    const countRef = collectionRef.parent.parent.child('liked/' + jobid + '/count');
+    const countRef = collectionRef.parent.parent.child('liked/' + postid + '/count');
 
     let increment;
     if (change.after.exists() && !change.before.exists()) {
@@ -56,10 +56,10 @@ exports.likeJob = functions.database.ref('/likes/{jobid}/{userid}').onWrite(
 
 
 // If the number of likes gets deleted, recount the number of likes
-exports.recountlikes = functions.database.ref('/liked/{jobid}/count').onDelete(async (snap, context) => {
-  const jobid = context.params.jobid;
+exports.recountlikes = functions.database.ref('/liked/{postid}/count').onDelete(async (snap, context) => {
+  const postid = context.params.postid;
   const counterRef = snap.ref;
-  const collectionRef = counterRef.parent.parent.parent.child('likes/' + jobid);
+  const collectionRef = counterRef.parent.parent.parent.child('likes/' + postid);
   // Return the promise from countRef.transaction() so our function
   // waits for this async event to complete before it exits.
   const messagesData = await collectionRef.once('value');
