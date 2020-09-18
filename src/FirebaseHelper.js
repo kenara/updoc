@@ -703,11 +703,24 @@ export default class FirebaseHelper {
    * Listens to updates on the likes of a post and calls the callback with likes counts.
    * TODO: This won't scale if a user has a huge amount of likes. We need to keep track of a
    *       likes count instead.
-   */
+   
   registerForLikesCount(postId, likesCallback) {
     const likesRef = this.database.ref(`/likes/${postId}`);
     likesRef.on('value', (data) => likesCallback(data.numChildren()));
     this.firebaseRefs.push(likesRef);
+  }
+  */
+  
+  registerForLikesCount(postId, likesCallback) {
+    const likedRef = this.database.ref(`/liked/${postId}`);
+    likedRef.on("value", function(snapshot) {
+      if (snapshot.val()) {
+        likesCallback(snapshot.val().count);
+        if (snapshot.val().count == '0') {
+          likesCallback('');
+        }
+      }
+    });
   }
 
   /**
