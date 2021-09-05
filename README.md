@@ -1,15 +1,10 @@
-# Friendly Pix Web Updated Version (All dependencies and modules updated!)
+# What is it? We thought you'd never ask!
 
-Friendly Pix Web is a sample app demonstrating how to build a JavaScript/Web app with the Firebase Platform.
-
-Friendly Pix is a place where you can share photos, follow friends, comment on photos...
-
-To see it in action, have a look at [friendly-pix.com](https://friendly-pix.com)
-
+Updoc is a social document management platform.
 
 ## Few words on technology used
 
-The Friendly Pix frontend is built using JavaScript, [Firebase](https://firebase.google.com/docs/web/setup) and jQuery.
+Updoc is based on the awesome Firebase FriendlyPix demo, built using JavaScript, [Firebase](https://firebase.google.com/docs/web/setup) and jQuery.
 
 Friendly Pix is written in ES2017 using Modules so for wide browser support the code is packed and transpiled to ES5 using [Webpack](https://webpack.js.org/). 
 
