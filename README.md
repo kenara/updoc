@@ -1,4 +1,4 @@
-# What is it? We thought you'd never ask!
+# What's updoc? We thought you'd never ask!
 
 Updoc is a social document management platform.
 
